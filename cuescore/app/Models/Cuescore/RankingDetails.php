@@ -75,6 +75,21 @@ class RankingDetails extends Cuescore
             if(!empty($tournament_value['stoptime'])){
                 $tournament_value['stoptime'] = $this->convertDateTimeToLocal($tournament_value['stoptime']);
             }
+            $check_value = strtolower($tournament_value['name']);
+            if(str_contains($check_value, '9-ball')){
+                $tournament_value['type'] = '9-ball';
+                $tournament_value['image'] = '/images/9-ball.jpg';
+            } else if(str_contains($check_value, '10-ball')){
+                $tournament_value['type'] = '10-ball';
+                $tournament_value['image'] = '/images/10-ball.jpg';
+            } else if(str_contains($check_value, '8-ball')){
+                $tournament_value['type'] = '8-ball';
+                $tournament_value['image'] = '/images/8-ball.jpg';
+            } else {
+                $tournament_value['type'] = 'undefined';
+                $tournament_value['image'] = '/images/renes.jpg';
+            }
+
             $this->tournaments_data[$tournament_key] = $tournament_value;
         }
         
