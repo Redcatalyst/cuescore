@@ -7,16 +7,18 @@ use DateTimeZone;
 
 abstract class Cuescore
 {
-    // Cuescore raning ID
+    // Cuescore raning ID for Rene's Pool Cafe 
+    // Todo: Move to an .env value
     protected int $ranking_id = 38820973;
     
     // Base API endpoint URL 
     protected string $cuescore_api_url = 'https://api.cuescore.com/';
 
     /**
-     * Undocumented function
+     * Execute an API call with the given url
+     * Todo: create proper errorhandling for exceptions
      *
-     * @param integer $id
+     * @param string $url
      * @return void
      */
     protected function getCuescoreAPIData(string $url)
@@ -36,7 +38,7 @@ abstract class Cuescore
     }
 
     /**
-     * Undocumented function
+     * Convert the data from Cuescore into something more readable for the users
      *
      * @param string $cuescore_date
      * @return void

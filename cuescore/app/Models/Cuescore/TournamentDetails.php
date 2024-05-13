@@ -19,23 +19,23 @@ class TournamentDetails extends Cuescore
     {
         $this->setTournamentId($id);
         // Load data from Cuescure based on given ID
-        $this->getTournamentDataFromCuescore();
+        $this->initTournamentDataFromCuescore();
     }
 
     /**
-     * Undocumented function
+     * Set and map the tournamentdata retrieved from Cuescore
      *
      * @param array $data
      * @return void
      */
-    private function setTournamentData(array $data)
+    private function setAndMapTournamentData(array $data)
     {
-        $this->tournament_data = $data;
+        $this->setTournamentData($data);
         $this->mapTournamentData();
     }
 
     /**
-     * Undocumented function
+     * Map the tournament data retrieved from Cuescore
      *
      * @param array $data
      * @return void
@@ -55,6 +55,7 @@ class TournamentDetails extends Cuescore
             $this->tournament_data['deadline'] = $this->convertDateTimeToLocal($this->tournament_data['deadline']);
         }
 
+        // Fill in image urls for the different disciplines
         switch($this->tournament_data['discipline'])
         {
 
@@ -77,7 +78,7 @@ class TournamentDetails extends Cuescore
     }
 
     /**
-     * Undocumented function
+     * Tournament data getter
      *
      * @return array
      */
@@ -87,23 +88,39 @@ class TournamentDetails extends Cuescore
     }
 
     /**
-     * Undocumented function
+     * Tournament data setter
+     *
+     * @param array $data
+     * @return void
+     */
+    public function setTournamentData(array $data)
+    {
+        $this->tournament_data = $data;
+    }
+
+    /**
+     * Initialize the tournament data from Cuescure, uses the setted tournament id from the class
      *
      * @param integer $id
      * @return void
      */
-    private function getTournamentDataFromCuescore()
+    private function initTournamentDataFromCuescore()
     {
-        $this->setTournamentData($this->getCuescoreAPIData($this->getTournamentUrl()));
+        $this->setAndMapTournamentData($this->getCuescoreAPIData($this->getTournamentUrl()));
     }
 
+    /**
+     * Get the URL builded with the set tournamentd id from the class
+     *
+     * @return void
+     */
     public function getTournamentUrl()
     {
         return $this->cuescore_api_url . "/tournament/?id=" . $this->getTournamentId();
     }
 
     /**
-     * Undocumented function
+     * Get the tournament id
      *
      * @return void
      */
@@ -113,7 +130,7 @@ class TournamentDetails extends Cuescore
     }
 
     /**
-     * Undocumented function
+     * Set the tournament id
      *
      * @param integer $id
      * @return void
