@@ -7,10 +7,6 @@ use DateTimeZone;
 
 abstract class Cuescore
 {
-    // Cuescore raning ID for Rene's Pool Cafe 
-    // Todo: Move to an .env value
-    protected int $ranking_id = 38820973;
-    
     // Base API endpoint URL 
     protected string $cuescore_api_url = 'https://api.cuescore.com/';
 

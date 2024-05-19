@@ -27,7 +27,7 @@ class RankingDetails extends Cuescore
      */
     private function getRankingUrl()
     {
-        return $this->cuescore_api_url . "/ranking/?id=" . $this->ranking_id;
+        return $this->cuescore_api_url . "/ranking/?id=" . env('CUESCORE_RANKING_ID');
     }
 
     /**

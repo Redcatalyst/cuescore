@@ -1,0 +1,24 @@
+.hero-detail {
+    margin-top: 10px;
+    height: 200px;
+    width: auto;
+}
+
+.hero-detail img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.tournament-details .card{
+    text-align: center;
+}
+
+.tournament-details h2 {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.tournament-details img {
+    height: 300px;
+    width: auto;
+}
